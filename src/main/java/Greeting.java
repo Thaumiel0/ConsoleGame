@@ -9,21 +9,32 @@ public class Greeting {
                 My name is:\s
                \s""");
         String name = in.nextLine();
-
         while(true) {
             System.out.printf(
                     """
-                            Hello, %s!
-                            Choose a game to play:
-                            1: SCM
-                            2: OtherGame
-                            """, name);
-            int choice = in.nextInt();
-            AbstractNumberGame nokGame = new NOKGame();
-            nokGame.startGame();
-        }
+                    Hello, %s!
+                    Choose a game to play:
+                    1: Least Common Multiple
+                    2: Missing Progression Number
+                    """, name);
 
+            AbstractNumberGame game = getGame();
+            game.startGame();
+        }
     }
 
+    private static AbstractNumberGame getGame(){
+        Scanner in = new Scanner(System.in);
+        while(true) {
+            int choice = in.nextInt();
+            if (choice == 1) {
+                return new NOKGame();
+            } else if (choice == 2) {
+                return new GPGame();
+            } else {
+                System.out.println("Ты что, глупенький? ;3");
+            }
+        }
+    }
 
 }
