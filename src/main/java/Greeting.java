@@ -10,13 +10,19 @@ public class Greeting {
                \s""");
         String name = in.nextLine();
 
-        System.out.printf(
-                """
-                Hello, %s!
-                Choose a game to play:
-                1: SCM
-                2: OtherGame
-                """, name);
+        while(true) {
+            System.out.printf(
+                    """
+                            Hello, %s!
+                            Choose a game to play:
+                            1: SCM
+                            2: OtherGame
+                            """, name);
+            int choice = in.nextInt();
+            AbstractNumberGame nokGame = new NOKGame();
+            nokGame.startGame();
+        }
+
     }
 
 

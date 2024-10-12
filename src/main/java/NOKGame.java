@@ -1,18 +1,8 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class NOKGame extends AbstractNumberGame{
 
     public NOKGame(){
-
+        System.out.println("Find the smallest common multiple of these 3 funny numbers :3");
     }
-
-//    private int getCorrectAnswer(int[] randomNums){
-//        int max = Math.max(Math.max(randomNums[0], randomNums[1]), randomNums[2]);
-//        return 0;
-//    }
-
 
     private int gcd(int a, int b){
         int result = Math.min(a,b);
@@ -48,14 +38,16 @@ public class NOKGame extends AbstractNumberGame{
         return product/findGCD(arr);
     }
 
-
     @Override
-    public void startGame() {
+    public int getQuestion() {
+        int[] numbers = new int[3];
+        System.out.print("Question: ");
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = GameUtil.getRandomNumber(1, 50);
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
 
-    }
-
-    @Override
-    public void getQuestion() {
-
+        return findLCM(numbers);
     }
 }

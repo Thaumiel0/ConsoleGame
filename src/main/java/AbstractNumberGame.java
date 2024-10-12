@@ -1,11 +1,21 @@
+import java.util.Scanner;
+
 abstract public class AbstractNumberGame{
 
+    protected int correctAnswer;
 
-    abstract public void startGame();
+    public void startGame(){
+        Scanner in = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            correctAnswer = getQuestion();
+            System.out.print("Answer: ");
+            showResult(in.nextInt());
+        }
+    };
 
-    abstract public void getQuestion();
+    abstract public int getQuestion();
 
-    public void showResult(int userAnswer, int correctAnswer){
+    public void showResult(int userAnswer){
         System.out.println("Your answer: " + userAnswer);
         if (userAnswer == correctAnswer){
             System.out.println("Correct!");
